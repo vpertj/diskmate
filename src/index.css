@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-surface-tertiary;
+  }
+
+  body {
+    @apply bg-surface text-ink-primary font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  /* 自定义滚动条 - macOS 风格 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-tertiary;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-elevated;
+  }
+}
+
+@layer components {
+  /* 玻璃拟态卡片 */
+  .glass-card {
+    @apply bg-surface-secondary/80 backdrop-blur-xl border border-white/5;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  /* 强调色渐变文字 */
+  .gradient-text {
+    @apply bg-gradient-accent bg-clip-text text-transparent;
+  }
+
+  /* 强调色渐变背景 */
+  .gradient-bg {
+    @apply bg-gradient-accent;
+  }
+
+  /* 悬浮发光效果 */
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-glow hover:-translate-y-0.5;
+  }
+
+  /* 扫描进度条流光动画 */
+  .progress-shimmer {
+    background: linear-gradient(
+      90deg,
+      #0A84FF 0%,
+      #5E5CE6 50%,
+      #30D158 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* 数字滚动动画 */
+.count-up {
+  animation: countUp 1s ease-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
